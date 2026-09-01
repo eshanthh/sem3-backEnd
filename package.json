@@ -1,0 +1,24 @@
+{
+  "name": "s3backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eshantharjun9-hub/sem3-backEnd.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eshantharjun9-hub/sem3-backEnd/issues"
+  },
+  "homepage": "https://github.com/eshantharjun9-hub/sem3-backEnd#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongoose": "^9.9.3"
+  }
+}
