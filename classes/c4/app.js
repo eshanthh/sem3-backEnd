@@ -3,9 +3,10 @@ const express = require("express");
 const app = express();
 
 const User = require("../db/db.js");
-
+const cors = require("cors");
 const bcrypt = require("bcryptjs");
 const mongoose = require('mongoose')
+app.use(cors());
 app.use(express.json());
 User.db
     .openUri("mongodb://127.0.0.1:27017/db")
