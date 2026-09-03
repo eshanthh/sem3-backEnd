@@ -14,9 +14,6 @@ User.db
             console.log("server is running on port 3000");
         });
     })
-    .catch((err) => {
-        console.log("DB connection error:", err);
-    });
 app.post("/signUp", async (req, res) => {
     let { name, email, passWord, role } = req.body;
     let findData = await User.findOne({ email });
