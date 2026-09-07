@@ -77,8 +77,6 @@ let roleCheck = (role) => {
         next()
     }
 }
-
-
 app.get('/api', auth, roleCheck("admin"), (req, res) => {
     res.send("apiiii")
 })
