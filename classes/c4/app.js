@@ -14,6 +14,9 @@ User.db
             console.log("server is running on port 3000");
         });
     })
+    .catch((err) => {
+        console.log("DB connection error:", err);
+    });
 app.post("/signUp", async (req, res) => {
     let { name, email, passWord, role } = req.body;
     let findData = await User.findOne({ email });
@@ -48,6 +51,7 @@ app.post("/login", async (req, res) => {
     }
     let token = jwt.sign(
         {
+            userId: findData._id,
             email: findData.email,
             role: findData.role
         },
@@ -60,9 +64,45 @@ let auth = (req, res, next) => {
     let token = req.headers.authorization
     if (!token) return res.send("who are youu")
     let decoded = jwt.verify(token, "secret")
+    console.log(decoded, 'deccc');
     req.user = decoded;
     next()
 }
-app.get('/api', auth, (req, res) => {
+
+let roleCheck = (role) => {
+    return (req, res, next) => {
+        if (req.user.role != role) {
+            return res.send("wrong acessss")
+        }
+        next()
+    }
+}
+
+
+app.get('/api', auth, roleCheck("admin"), (req, res) => {
     res.send("apiiii")
+})
+
+app.get('/me', auth, async (req, res) => {
+    console.log(req.user);
+    let uId = req.user.userId;
+    let findUser = await User.find()
+    console.log(findUser, 'heehe');
+    if (!findUser) {
+        return res.status(404).json({ msg: "Error" });
+    }
+    res.json(findUser);
+});
+
+app.put('/me', auth, async (req, res) => {
+    let { name } = req.body;
+    let updateUser = await User.findByIdAndUpdate(
+        req.user.userId,
+        { name: name },
+        { new: true }
+    )
+    if (!updateUser) {
+        return res.status(400).json({ msg: "Error" })
+    }
+    res.json(updateUser)
 })
