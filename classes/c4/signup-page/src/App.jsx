@@ -30,8 +30,12 @@ const App = () => {
 
 
   async function done() {
-    let apiR = await axios.post("http://localhost:3000/signUp", data)
-    console.log(apiR, "heheheeh");
+    try {
+      let apiR = await axios.post("http://localhost:3000/signUp", data)
+      console.log(apiR, "heheheeh");
+    } catch (error) {
+      console.error("Signup failed:", error.response?.data || error.message);
+    }
   }
   async function login() {
     let apiR = await axios.post("http://localhost:3000/login", loginData)

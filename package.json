@@ -19,6 +19,7 @@
   "homepage": "https://github.com/eshantharjun9-hub/sem3-backEnd#readme",
   "dependencies": {
     "express": "^5.2.1",
-    "mongoose": "^9.9.3"
+    "mongoose": "^9.9.3",
+    "nodemailer": "^10.0.10"
   }
 }
