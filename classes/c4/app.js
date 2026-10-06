@@ -314,7 +314,7 @@ app.post("/forgot-password", async (req, res) => {
         await user.save();
 
         const resetUrl =
-            `${req.protocol}://${req.get("host")}/api/reset-password/${resetToken}`;
+            `http://localhost:5173/reset?token=${encodeURIComponent(resetToken)}`;
 
         console.log("RESET URL:", resetUrl);
 

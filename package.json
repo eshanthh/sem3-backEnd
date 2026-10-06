@@ -20,6 +20,8 @@
   "dependencies": {
     "express": "^5.2.1",
     "mongoose": "^9.9.3",
-    "nodemailer": "^10.0.10"
+    "nodemailer": "^10.0.10",
+    "react-router-dom": "^7.18.4",
+    "twilio": "^6.1.2"
   }
 }
