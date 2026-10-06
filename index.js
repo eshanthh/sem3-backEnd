@@ -1,7 +1,7 @@
 const exprees=require('express')
 const otp = require('./otp')
 
-const app = exprees()
+const app = exprees ()
 
 app.use(exprees.json())
 
